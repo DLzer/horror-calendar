@@ -5,55 +5,130 @@ body {
     flex-flow: column;
     align-items: center;
     font-family: "Poppins", serif;
-    background: rgb(253, 165, 24);
-    background: radial-gradient(circle,
-            rgb(255, 158, 47) 0%,
-            rgb(255, 77, 77) 100%);
+    background: black;
+    padding: 1rem;
+    min-height: 100vh;
 }
 
 h1 {
     font-weight: 800;
     margin: 1rem 0 0;
+    text-align: center;
+    color: #FFF;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.45)) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.85));
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+h1 + p {
+    color: #FFF;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.45)) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.85));
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
 }
 
 ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
     list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+}
 
-    li a {
-        color: #000000;
-        text-decoration: none;
-        display: flex;
-        width: 10rem;
-        height: 10rem;
-        margin: 0.25rem;
-        flex-flow: column;
-        border-radius: 0.2rem;
-        padding: 1rem;
-        font-weight: 300;
-        font-size: 0.8rem;
-        box-sizing: border-box;
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
+li a {
+    color: #FFF;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 10rem;
+    margin: 0.25rem;
+    flex-flow: column;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    font-weight: 300;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        time {
-            font-size: 2rem;
-            margin: 0 0 1rem 0;
-            font-weight: 500;
-        }
+li a:hover, li a:focus, li a:active {
+    transform: scale(1.05);
+    box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.95) !important;
+}
+
+li a time {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.45)) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.85));
+}
+
+li a span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #FFF;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.45)) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.85));
+    line-height: 1.15;
+}
+
+.today {
+    border-radius: 10px;
+}
+
+.today a {
+    animation: glow 2s infinite alternate;
+    border: 2px solid #FFF;
+}
+
+// Bright glowing animation using filter
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 10px #fff), drop-shadow(0 0 10px #fff), drop-shadow(0 0 10px #fff);
     }
 
-    .today {
-        time {
-            font-weight: 800;
-        }
+    to {
+        filter: drop-shadow(0 0 20px #fff);
+    }
+}
 
-        background: #ffffff70;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    li a {
+        width: 100%;
+        height: 8rem;
+        font-size: 0.7rem;
+    }
+
+    li a time {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    li a {
+        height: 6rem;
+        font-size: 0.6rem;
+    }
+
+    li a time {
+        font-size: 1.2rem;
     }
 }
